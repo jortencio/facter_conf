@@ -1,1 +1,2 @@
---- {}
+---
+facter_conf::config_path: '/etc/puppetlabs/facter'
