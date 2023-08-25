@@ -123,7 +123,7 @@ class facter_conf (
         path    => $facter_conf_path,
         setting => 'global.custom-dir',
         type    => 'array',
-        value   => $facts_ttls,
+        value   => $global_custom_dir,
         require => File[$facter_conf_path],
       }
     }
