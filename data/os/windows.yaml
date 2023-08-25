@@ -1,2 +1,2 @@
 ---
-facter_conf::config_path: 'C:\ProgramData\PuppetLabs\facter\etc\facter.conf'
+facter_conf::config_path: 'C:/ProgramData/PuppetLabs/facter/etc'

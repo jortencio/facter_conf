@@ -27,7 +27,7 @@
 #   include facter_conf
 class facter_conf (
   Enum[present,absent]       $facter_conf_ensure = present,
-  String[1]                  $config_path = '/etc/puppetlabs/facter/facter.conf',
+  String[1]                  $config_path = '/etc/puppetlabs/facter',
   String[1]                  $owner = 'root',
   String[1]                  $group = 'root',
   String[1]                  $mode = '0644',
