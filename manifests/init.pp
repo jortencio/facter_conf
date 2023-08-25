@@ -206,7 +206,7 @@ class facter_conf (
     }
 
     if $fact_groups {
-      $fact_groups.each | Array $fact_group | {
+      $fact_groups.each | Struct[{ name => String[1], facts => Array[String[1]], }] $fact_group | {
         hocon_setting { "facter_conf.fact-groups.${fact_group['name']}":
           ensure  => $facter_conf_ensure,
           path    => $facter_conf_path,
