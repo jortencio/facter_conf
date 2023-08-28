@@ -1,4 +1,5 @@
 ---
 facter_conf::config_path: '/etc/puppetlabs/facter'
-facter_conf::owner: 'BUILTIN\Administrators'
-facter_conf::group: 'NT AUTHORITY\SYSTEM'
+facter_conf::owner: 'root'
+facter_conf::group: 'root'
+facter_conf::group: '0644'
