@@ -128,7 +128,7 @@ class facter_conf (
       }
     }
 
-    if $global_no_external_facts {
+    if $global_no_external_facts != undef {
       hocon_setting { 'facter_conf.global.no-external-facts':
         ensure  => $facter_conf_ensure,
         path    => $facter_conf_path,
@@ -139,7 +139,7 @@ class facter_conf (
       }
     }
 
-    if $global_no_custom_facts {
+    if $global_no_custom_facts != undef {
       hocon_setting { 'facter_conf.global.no-custom-facts':
         ensure  => $facter_conf_ensure,
         path    => $facter_conf_path,
@@ -150,7 +150,7 @@ class facter_conf (
       }
     }
 
-    if $global_no_ruby {
+    if $global_no_ruby != undef {
       hocon_setting { 'facter_conf.global.no-ruby':
         ensure  => $facter_conf_ensure,
         path    => $facter_conf_path,
@@ -161,7 +161,7 @@ class facter_conf (
       }
     }
 
-    if $cli_debug {
+    if $cli_debug != undef {
       hocon_setting { 'facter_conf.cli.debug':
         ensure  => $facter_conf_ensure,
         path    => $facter_conf_path,
@@ -172,7 +172,7 @@ class facter_conf (
       }
     }
 
-    if $cli_trace {
+    if $cli_trace != undef {
       hocon_setting { 'facter_conf.cli.trace':
         ensure  => $facter_conf_ensure,
         path    => $facter_conf_path,
@@ -183,7 +183,7 @@ class facter_conf (
       }
     }
 
-    if $cli_verbose {
+    if $cli_verbose != undef {
       hocon_setting { 'facter_conf.cli.verbose':
         ensure  => $facter_conf_ensure,
         path    => $facter_conf_path,
