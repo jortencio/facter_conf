@@ -1,5 +1,6 @@
 #! /opt/puppetlabs/puppet/bin/ruby
 # Task to clear out facter cache
+# Note: if the OS fact is cached, the fact cache with the OS fact will be recreated and deleted
 require 'facter'
 
 fact_cache_dir = if Facter.value('os')['family'] == 'windows'
