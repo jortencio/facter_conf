@@ -1,0 +1,11 @@
+{
+  "puppet_task_version": 1,
+  "supports_noop": false,
+  "description": "A task for deleting facter.conf.  This is useful for when Puppet/Facter runs are failing due to a malformed/incorrect facter.conf file",
+  "parameters": {
+  },
+  "implementations": [
+    { "name": "delete_facter_conf_linux.sh", "requirements": ["shell"] },
+    { "name": "delete_facter_conf_windows.ps1", "requirements": ["powershell"] }
+  ]
+}
