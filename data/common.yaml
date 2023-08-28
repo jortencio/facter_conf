@@ -2,4 +2,4 @@
 facter_conf::config_path: '/etc/puppetlabs/facter'
 facter_conf::owner: 'root'
 facter_conf::group: 'root'
-facter_conf::group: '0644'
+facter_conf::mode: '0644'
