@@ -1,2 +1,5 @@
 ---
 facter_conf::config_path: 'C:/ProgramData/PuppetLabs/facter/etc'
+facter_conf::owner: 'BUILTIN\Administrators'
+facter_conf::group: 'NT AUTHORITY\SYSTEM'
+facter_conf::mode: '0640'
