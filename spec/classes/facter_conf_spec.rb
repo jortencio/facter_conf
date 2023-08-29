@@ -7,11 +7,11 @@ describe 'facter_conf' do
     context "on #{os}" do
       let(:facts) { os_facts }
 
-      if os_facts[:os]['family'] == 'windows'
-        facter_path = 'C:/ProgramData/PuppetLabs/facter/etc'
-      else
-        facter_path = '/etc/puppetlabs/facter'
-      end
+      facter_path = if os_facts[:os]['family'] == 'windows'
+                      'C:/ProgramData/PuppetLabs/facter/etc'
+                    else
+                      '/etc/puppetlabs/facter'
+                    end
 
       it { is_expected.to contain_file(facter_path) }
       it { is_expected.to contain_file("#{facter_path}/facter.conf") }
