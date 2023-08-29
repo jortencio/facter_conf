@@ -1,117 +1,122 @@
 # facter_conf
 
-Welcome to your new module. A short overview of the generated parts can be found
-in the [PDK documentation][1].
+A Puppet module that is used to configure ```facter.conf```.
 
-The README template below provides a starting point with details about what
-information to include in your README.
+For more information, please refer to [Configuring Facter with facter.conf][1]
 
 ## Table of Contents
 
 1. [Description](#description)
-1. [Setup - The basics of getting started with facter_conf](#setup)
-    * [What facter_conf affects](#what-facter_conf-affects)
-    * [Setup requirements](#setup-requirements)
+1. [Setup](#setup)
     * [Beginning with facter_conf](#beginning-with-facter_conf)
-1. [Usage - Configuration options and additional functionality](#usage)
-1. [Limitations - OS compatibility, etc.](#limitations)
-1. [Development - Guide for contributing to the module](#development)
+1. [Usage](#usage)
+1. [Limitations](#limitations)
+1. [Development](#development)
 
 ## Description
 
-Briefly tell users why they might want to use your module. Explain what your
-module does and what kind of problems users can solve with it.
-
-This should be a fairly short description helps the user decide if your module
-is what they want.
+facter_conf is a module for easily configuring Facter to set how it interacts with a system, configure fact caching, fact groups and facts/fact groups to block. 
 
 ## Setup
 
-### What facter_conf affects **OPTIONAL**
-
-If it's obvious what your module touches, you can skip this section. For
-example, folks can probably figure out that your mysql_instance module affects
-their MySQL instances.
-
-If there's more that they should know about, though, this is the place to
-mention:
-
-* Files, packages, services, or operations that the module will alter, impact,
-  or execute.
-* Dependencies that your module automatically installs.
-* Warnings or other important notices.
-
-### Setup Requirements **OPTIONAL**
-
-If your module requires anything extra before setting up (pluginsync enabled,
-another module, etc.), mention it here.
-
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you might want to include an additional "Upgrading" section here.
-
 ### Beginning with facter_conf
 
-The very basic steps needed for a user to get the module up and running. This
-can include setup steps, if necessary, or it can be an example of the most basic
-use of the module.
+By default, facter_conf will simply create an empty ```facter.conf``` file.
+
+```puppet
+include facter_conf
+```
 
 ## Usage
 
-Include usage examples for common use cases in the **Usage** section. Show your
-users how to use your module to solve problems, and be sure to include code
-examples. Include three to five examples of the most important or common tasks a
-user can accomplish with your module. Show users how to accomplish more complex
-tasks that involve different types, classes, and functions working in tandem.
+facter_conf supports the use of Hiera data for setting parameters.  Please refer to [REFERENCE][2] for a list of configurable parameters. 
 
-## Reference
+### Configure fact caching
 
-This section is deprecated. Instead, add reference information to your code as
-Puppet Strings comments, and then use Strings to generate a REFERENCE.md in your
-module. For details on how to add code comments and generate documentation with
-Strings, see the [Puppet Strings documentation][2] and [style guide][3].
-
-If you aren't ready to use Strings yet, manually create a REFERENCE.md in the
-root of your module directory and list out each of your module's classes,
-defined types, facts, functions, Puppet tasks, task plans, and resource types
-and providers, along with the parameters for each.
-
-For each element (class, defined type, function, and so on), list:
-
-* The data type, if applicable.
-* A description of what the element does.
-* Valid values, if the data type doesn't make it obvious.
-* Default value, if any.
-
-For example:
-
+```yaml
+---
+facter_conf::facts_ttls:
+  - timezone: '30 days'
+  - os: '1 hour'
 ```
-### `pet::cat`
 
-#### Parameters
+### Configure fact caching for a custom fact group
 
-##### `meow`
+```yaml
+---
+facter_conf::facts_ttls:
+  - custom_fact_group: '30 days'
+facter_conf::fact_groups:
+  - name: 'custom_fact_group'
+    facts:
+      - 'os.name'
+      - 'ec2_metadata'
+```
 
-Enables vocalization in your cat. Valid options: 'string'.
+### Configuring all sections of facter.conf
 
-Default: 'medium-loud'.
+```yaml
+facter_conf::facts_blocklist: 
+  - 'file system'
+  - 'EC2' 
+  - 'os.architecture'
+facter_conf::facts_ttls:
+  - timezone: '30 days'
+  - os: '30 days'
+facter_conf::global_external_dir:
+  - 'path1'
+  - 'path2'
+facter_conf::global_custom_dir:
+  - 'custom/path'
+facter_conf::global_no_external_facts: false
+facter_conf::global_no_custom_facts: false
+facter_conf::global_no_ruby: false
+facter_conf::cli_debug: false
+facter_conf::cli_trace: true
+facter_conf::cli_verbose: false
+facter_conf::cli_log_level: 'warn'
+facter_conf::fact_groups:
+  - name: 'custom_fact_group'
+    facts:
+      - 'os.name'
+      - 'ssh'
+```
+
+The same configuration can be done as a class declaration as follows:
+
+```puppet
+  class { 'facter_conf':
+    facts_blocklist          => ['file system', 'EC2', 'os.architecture'],
+    facts_ttls               => [
+      { 'timezone' => '30 days' },
+      { 'os' => '30 days' },
+    ],
+    global_external_dir      => ['path1', 'path2'],
+    global_custom_dir        => ['custom/path'],
+    global_no_external_facts => false,
+    global_no_custom_facts   => false,
+    global_no_ruby           => false,
+    cli_debug                => false,
+    cli_trace                => true,
+    cli_verbose              => false,
+    cli_log_level            => 'warn',
+    fact_groups              => [
+      {
+        name  => 'custom-group-name',
+        facts => ['os.name','ssh'],
+      }
+    ],
+  }
 ```
 
 ## Limitations
 
-In the Limitations section, list any incompatibilities, known issues, or other
-warnings.
+This module has only been tested with Facter 4.3.1
 
 ## Development
 
-In the Development section, tell other users the ground rules for contributing
-to your project and how they should submit their work.
+If you would like to contribute with the development of this module, please feel free to log development changes in the [issues][3] register for this project
 
-## Release Notes/Contributors/Etc. **Optional**
-
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You can also add any additional sections you feel are
-necessary or important to include here. Please use the `##` header.
-
-[1]: https://puppet.com/docs/pdk/latest/pdk_generating_modules.html
-[2]: https://puppet.com/docs/puppet/latest/puppet_strings.html
-[3]: https://puppet.com/docs/puppet/latest/puppet_strings_style.html
+[1]: https://www.puppet.com/docs/puppet/latest/configuring_facter.html
+[2]: https://forge.puppet.com/modules/jortencio/facter_conf/reference
+[3]: https://github.com/jortencio/facter_conf/issues

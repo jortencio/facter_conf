@@ -3,25 +3,72 @@
 # Configures facter.conf based on settings available at https://www.puppet.com/docs/puppet/latest/configuring_facter.html
 #
 # @param facter_conf_ensure
+#
+#  Sets whether to ensure facter.conf is present or absent
+#
 # @param config_path
 #
 #  Path for configuring facter.conf
 #
 # @param owner
+#
+#  Owner of facter.conf file
+#
 # @param group
+#
+#  Group of facter.conf file
+#
 # @param mode
+#
+#  Mode of facter.conf file
+#
 # @param facts_blocklist
+#
+#  Optional array for setting facts to block
+#
 # @param facts_ttls
+#
+#  Optional array of hashes for setting the time to live (ttl) for given facts.  This will cache the facts listed for the given duration.
+#
 # @param global_external_dir
+#
+#  Optional array of paths to search in for external facts
+#
 # @param global_custom_dir
+#
+#  Optional array of paths to search in for custom facts
+#
 # @param global_no_external_facts
+#
+#  Optional boolean. If true, prevents Facter from searching for external facts.
+#
 # @param global_no_custom_facts
+#
+#  Optional boolean.  If true, prevents Facter from searching for custom facts.
+#
 # @param global_no_ruby
+#
+#  Optional boolean.  If true, prevents Facter from loading its Ruby functionality.
+#
 # @param cli_debug
+#
+#  Optional boolean.  If true, Facter outputs debug messages.
+#
 # @param cli_trace
+#
+#  Optional boolean.  If true, Facter prints stacktraces from errors arising in your custom facts.
+#
 # @param cli_verbose
+#
+#  Optional boolean.  If true, Facter outputs its most detailed messages.
+#
 # @param cli_log_level
+#
+#  Sets the minimum level of message severity that gets logged. Valid options: "none", "fatal", "error", "warn", "info", "debug", "trace".
+#
 # @param fact_groups
+#
+#  Definition of custom fact groups which can be used for blocking (blocklist) or caching (ttls) groups of facts.
 #
 # @example
 #   include facter_conf
