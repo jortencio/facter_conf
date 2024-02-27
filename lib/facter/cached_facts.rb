@@ -11,6 +11,6 @@ Facter.add(:cached_facts) do
                          '/etc/puppetlabs/facter/facter.conf'
                        end
     facter_conf = Hocon.load(facter_conf_path)
-    facter_conf
+    facter_conf['facts']
   end
 end
