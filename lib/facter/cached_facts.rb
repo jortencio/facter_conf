@@ -11,6 +11,11 @@ Facter.add(:cached_facts) do
                          '/etc/puppetlabs/facter/facter.conf'
                        end
     facter_conf = Hocon.load(facter_conf_path)
-    facter_conf['facts']
+
+    if !facter_conf['facts']['ttls'].blank?
+      facter_conf['facts']['ttls']
+    else
+      []
+    end
   end
 end
