@@ -43,13 +43,17 @@ describe :cached_facts, type: :fact do
     allow(Hocon).to receive(:load).with('C:/ProgramData/PuppetLabs/facter/etc/facter.conf').and_return({
                                                                                                          'facts' => {
                                                                                                            'ttls' => [
-                                                                                                             { 'timezone': '30 days' },
+                                                                                                             { 'timezone' => '30 days' },
+                                                                                                             { 'architecture' => '30 days' },
                                                                                                            ]
                                                                                                          }
                                                                                                        })
   end
 
   it 'returns a value' do
-    expect(fact.value).to eq({ 'timezone' => ['30 days'] })
+    expect(fact.value).to eq({
+                               'timezone' => ['30 days'],
+                               'architecture' => ['30 days'],
+                             })
   end
 end
