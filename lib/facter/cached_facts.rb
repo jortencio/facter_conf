@@ -12,8 +12,16 @@ Facter.add(:cached_facts) do
                        end
     facter_conf = Hocon.load(facter_conf_path)
 
-    if !facter_conf['facts']['ttls'].nil?
-      facter_conf['facts']['ttls'].each_with_object({}) { |pairs, h| pairs.each { |k, v| (h[k] ||= []) << v } }
+    if !facter_conf['facts'].nil?
+      if !facter_conf['facts']['ttls'].nil?
+        facter_conf['facts']['ttls'].each_with_object({}) do |cached_facts, hash|
+          cached_facts.each do |key, value|
+            (hash[key] ||= []) << value
+          end
+        end
+      else
+        []
+      end
     else
       []
     end
