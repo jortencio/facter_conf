@@ -63,5 +63,6 @@
   ],
   "pdk-version": "3.0.1",
   "template-url": "pdk-default#3.0.1",
-  "template-ref": "tags/3.0.1-0-gd13288a"
+  "template-ref": "tags/3.0.1-0-gd13288a",
+  "tags": ["facter","cache"]
 }
