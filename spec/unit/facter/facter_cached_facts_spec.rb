@@ -2,10 +2,10 @@
 
 require 'spec_helper'
 require 'facter'
-require 'facter/cached_facts'
+require 'facter/facter_cached_facts'
 
-describe :cached_facts, type: :fact do
-  subject(:fact) { Facter.fact(:cached_facts) }
+describe :facter_cached_facts, type: :fact do
+  subject(:fact) { Facter.fact(:facter_cached_facts) }
 
   # Mocking Facts
   # You will most likely need to mock other facts if your custom fact relies up on them

@@ -2,7 +2,7 @@
 
 require 'hocon'
 
-Facter.add(:cached_facts) do
+Facter.add(:facter_cached_facts) do
   confine facter_conf_exists: true
   setcode do
     facter_conf_path = if Facter.value('os')['family'] == 'windows'
