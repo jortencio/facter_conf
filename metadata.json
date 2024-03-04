@@ -20,37 +20,47 @@
     {
       "operatingsystem": "OracleLinux",
       "operatingsystemrelease": [
-        "7"
+        "7",
+        "8",
+        "9"
       ]
     },
     {
       "operatingsystem": "RedHat",
       "operatingsystemrelease": [
-        "8"
+        "7",
+        "8",
+        "9"
       ]
     },
     {
-      "operatingsystem": "Scientific",
+      "operatingsystem": "Rocky",
       "operatingsystemrelease": [
-        "7"
+        "8",
+        "9"
       ]
     },
     {
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
-        "10"
+        "10",
+        "11"
       ]
     },
     {
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
-        "18.04"
+        "18.04",
+        "20.04",
+        "22.04"
       ]
     },
     {
       "operatingsystem": "windows",
       "operatingsystemrelease": [
+        "2016",
         "2019",
+        "2022",
         "10"
       ]
     }
@@ -64,5 +74,8 @@
   "pdk-version": "3.0.1",
   "template-url": "pdk-default#3.0.1",
   "template-ref": "tags/3.0.1-0-gd13288a",
-  "tags": ["facter","cache"]
+  "tags": [
+    "facter",
+    "cache"
+  ]
 }
