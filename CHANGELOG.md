@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 1.2.0
+
+**Features**
+
+- Add additional OS support
+
+**Bugfixes**
+
+**Known Issues**
+
 ## Release 1.1.0
 
 **Features**
