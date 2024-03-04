@@ -111,7 +111,7 @@ The same configuration can be done as a class declaration as follows:
 
 ## Limitations
 
-This module has only been tested with Facter 4.3.1
+This module has only been tested with Facter versions > 4.3.1
 
 ## Development
 
