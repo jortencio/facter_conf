@@ -73,7 +73,7 @@
 # @example
 #   include facter_conf
 class facter_conf (
-  Enum[present,absent]       $facter_conf_ensure = present,
+  Enum['present','absent']   $facter_conf_ensure = 'present',
   String[1]                  $config_path = '/etc/puppetlabs/facter',
   String[1]                  $owner = 'root',
   String[1]                  $group = 'root',
@@ -130,8 +130,8 @@ class facter_conf (
     mode   => $mode,
   }
 
-  if $facter_conf_ensure == present {
-    if $facts_blocklist {
+  if $facter_conf_ensure == 'present' {
+    if $facts_blocklist != undef {
       hocon_setting { 'facter_conf.facts.blocklist':
         ensure  => $facter_conf_ensure,
         path    => $facter_conf_path,
@@ -142,7 +142,7 @@ class facter_conf (
       }
     }
 
-    if $facts_ttls {
+    if $facts_ttls != undef {
       hocon_setting { 'facter_conf.facts.ttls':
         ensure  => $facter_conf_ensure,
         path    => $facter_conf_path,
@@ -153,7 +153,7 @@ class facter_conf (
       }
     }
 
-    if $global_external_dir {
+    if $global_external_dir != undef {
       hocon_setting { 'facter_conf.global.external-dir':
         ensure  => $facter_conf_ensure,
         path    => $facter_conf_path,
@@ -164,7 +164,7 @@ class facter_conf (
       }
     }
 
-    if $global_custom_dir {
+    if $global_custom_dir != undef {
       hocon_setting { 'facter_conf.global.custom-dir':
         ensure  => $facter_conf_ensure,
         path    => $facter_conf_path,
@@ -241,7 +241,7 @@ class facter_conf (
       }
     }
 
-    if $cli_log_level {
+    if $cli_log_level != undef {
       hocon_setting { 'facter_conf.cli.log-level':
         ensure  => $facter_conf_ensure,
         path    => $facter_conf_path,
@@ -252,7 +252,7 @@ class facter_conf (
       }
     }
 
-    if $fact_groups {
+    if $fact_groups != undef {
       $fact_groups.each | Struct[{ name => String[1], facts => Array[String[1]], }] $fact_group | {
         hocon_setting { "facter_conf.fact-groups.${fact_group['name']}":
           ensure  => $facter_conf_ensure,
