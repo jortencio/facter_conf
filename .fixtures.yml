@@ -3,4 +3,7 @@
 ---
 fixtures:
   forge_modules:
+    hocon:
+      repo: "puppetlabs-hocon"
+      ref: "2.0.0"
 #     stdlib: "puppetlabs/stdlib"
