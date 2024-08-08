@@ -133,121 +133,209 @@ class facter_conf (
   if $facter_conf_ensure == 'present' {
     if $facts_blocklist != undef {
       hocon_setting { 'facter_conf.facts.blocklist':
-        ensure  => $facter_conf_ensure,
+        ensure  => present,
         path    => $facter_conf_path,
         setting => 'facts.blocklist',
         type    => 'array',
         value   => $facts_blocklist,
         require => File[$facter_conf_path],
       }
+    } else {
+      hocon_setting { 'facter_conf.facts.blocklist':
+        ensure  => absent,
+        path    => $facter_conf_path,
+        setting => 'facts.blocklist',
+        type    => 'array',
+        require => File[$facter_conf_path],
+      }
     }
 
     if $facts_ttls != undef {
       hocon_setting { 'facter_conf.facts.ttls':
-        ensure  => $facter_conf_ensure,
+        ensure  => present,
         path    => $facter_conf_path,
         setting => 'facts.ttls',
         type    => 'array',
         value   => $facts_ttls,
         require => File[$facter_conf_path],
       }
+    } else {
+      hocon_setting { 'facter_conf.facts.ttls':
+        ensure  => absent,
+        path    => $facter_conf_path,
+        setting => 'facts.ttls',
+        type    => 'array',
+        require => File[$facter_conf_path],
+      }
     }
 
     if $global_external_dir != undef {
       hocon_setting { 'facter_conf.global.external-dir':
-        ensure  => $facter_conf_ensure,
+        ensure  => present,
         path    => $facter_conf_path,
         setting => 'global.external-dir',
         type    => 'array',
         value   => $global_external_dir,
         require => File[$facter_conf_path],
       }
+    } else {
+      hocon_setting { 'facter_conf.global.external-dir':
+        ensure  => absent,
+        path    => $facter_conf_path,
+        setting => 'global.external-dir',
+        type    => 'array',
+        require => File[$facter_conf_path],
+      }
     }
 
     if $global_custom_dir != undef {
       hocon_setting { 'facter_conf.global.custom-dir':
-        ensure  => $facter_conf_ensure,
+        ensure  => present,
         path    => $facter_conf_path,
         setting => 'global.custom-dir',
         type    => 'array',
         value   => $global_custom_dir,
         require => File[$facter_conf_path],
       }
+    } else {
+      hocon_setting { 'facter_conf.global.custom-dir':
+        ensure  => absent,
+        path    => $facter_conf_path,
+        setting => 'global.custom-dir',
+        type    => 'array',
+        require => File[$facter_conf_path],
+      }
     }
 
     if $global_no_external_facts != undef {
       hocon_setting { 'facter_conf.global.no-external-facts':
-        ensure  => $facter_conf_ensure,
+        ensure  => present,
         path    => $facter_conf_path,
         setting => 'global.no-external-facts',
         type    => 'boolean',
         value   => $global_no_external_facts,
         require => File[$facter_conf_path],
       }
+    } else {
+      hocon_setting { 'facter_conf.global.no-external-facts':
+        ensure  => absent,
+        path    => $facter_conf_path,
+        setting => 'global.no-external-facts',
+        type    => 'boolean',
+        require => File[$facter_conf_path],
+      }
     }
 
     if $global_no_custom_facts != undef {
       hocon_setting { 'facter_conf.global.no-custom-facts':
-        ensure  => $facter_conf_ensure,
+        ensure  => present,
         path    => $facter_conf_path,
         setting => 'global.no-custom-facts',
         type    => 'boolean',
         value   => $global_no_custom_facts,
         require => File[$facter_conf_path],
       }
+    } else {
+      hocon_setting { 'facter_conf.global.no-custom-facts':
+        ensure  => absent,
+        path    => $facter_conf_path,
+        setting => 'global.no-custom-facts',
+        type    => 'boolean',
+        require => File[$facter_conf_path],
+      }
     }
 
     if $global_no_ruby != undef {
       hocon_setting { 'facter_conf.global.no-ruby':
-        ensure  => $facter_conf_ensure,
+        ensure  => present,
         path    => $facter_conf_path,
         setting => 'global.no-ruby',
         type    => 'boolean',
         value   => $global_no_ruby,
         require => File[$facter_conf_path],
       }
+    } else {
+      hocon_setting { 'facter_conf.global.no-ruby':
+        ensure  => absent,
+        path    => $facter_conf_path,
+        setting => 'global.no-ruby',
+        type    => 'boolean',
+        require => File[$facter_conf_path],
+      }
     }
 
     if $cli_debug != undef {
       hocon_setting { 'facter_conf.cli.debug':
-        ensure  => $facter_conf_ensure,
+        ensure  => present,
         path    => $facter_conf_path,
         setting => 'cli.debug',
         type    => 'boolean',
         value   => $cli_debug,
         require => File[$facter_conf_path],
       }
+    } else {
+      hocon_setting { 'facter_conf.cli.debug':
+        ensure  => absent,
+        path    => $facter_conf_path,
+        setting => 'cli.debug',
+        type    => 'boolean',
+        require => File[$facter_conf_path],
+      }
     }
 
     if $cli_trace != undef {
       hocon_setting { 'facter_conf.cli.trace':
-        ensure  => $facter_conf_ensure,
+        ensure  => present,
         path    => $facter_conf_path,
         setting => 'cli.trace',
         type    => 'boolean',
         value   => $cli_trace,
         require => File[$facter_conf_path],
       }
+    } else {
+      hocon_setting { 'facter_conf.cli.trace':
+        ensure  => absent,
+        path    => $facter_conf_path,
+        setting => 'cli.trace',
+        type    => 'boolean',
+        require => File[$facter_conf_path],
+      }
     }
 
     if $cli_verbose != undef {
       hocon_setting { 'facter_conf.cli.verbose':
-        ensure  => $facter_conf_ensure,
+        ensure  => present,
         path    => $facter_conf_path,
         setting => 'cli.verbose',
         type    => 'boolean',
         value   => $cli_verbose,
         require => File[$facter_conf_path],
       }
+    } else {
+      hocon_setting { 'facter_conf.cli.verbose':
+        ensure  => absent,
+        path    => $facter_conf_path,
+        setting => 'cli.verbose',
+        type    => 'boolean',
+        require => File[$facter_conf_path],
+      }
     }
 
     if $cli_log_level != undef {
       hocon_setting { 'facter_conf.cli.log-level':
-        ensure  => $facter_conf_ensure,
+        ensure  => present,
         path    => $facter_conf_path,
         setting => 'cli.log-level',
         type    => 'string',
         value   => $cli_log_level,
+        require => File[$facter_conf_path],
+      }
+    } else {
+      hocon_setting { 'facter_conf.cli.log-level':
+        ensure  => absent,
+        path    => $facter_conf_path,
+        setting => 'cli.log-level',
+        type    => 'string',
         require => File[$facter_conf_path],
       }
     }
@@ -255,13 +343,21 @@ class facter_conf (
     if $fact_groups != undef {
       $fact_groups.each | Struct[{ name => String[1], facts => Array[String[1]], }] $fact_group | {
         hocon_setting { "facter_conf.fact-groups.${fact_group['name']}":
-          ensure  => $facter_conf_ensure,
+          ensure  => present,
           path    => $facter_conf_path,
           setting => "fact-groups.${fact_group['name']}",
           type    => 'array',
           value   => $fact_group['facts'],
           require => File[$facter_conf_path],
         }
+      }
+    } else {
+      hocon_setting { 'facter_conf.fact-groups':
+        ensure  => absent,
+        path    => $facter_conf_path,
+        setting => 'fact-groups',
+        type    => 'hash',
+        require => File[$facter_conf_path],
       }
     }
   }
