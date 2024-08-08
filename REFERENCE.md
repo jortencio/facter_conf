@@ -51,11 +51,11 @@ The following parameters are available in the `facter_conf` class:
 
 ##### <a name="-facter_conf--facter_conf_ensure"></a>`facter_conf_ensure`
 
-Data type: `Enum[present,absent]`
+Data type: `Enum['present','absent']`
 
 Sets whether to ensure facter.conf is present or absent
 
-Default value: `present`
+Default value: `'present'`
 
 ##### <a name="-facter_conf--config_path"></a>`config_path`
 
