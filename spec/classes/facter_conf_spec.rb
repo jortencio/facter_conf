@@ -51,8 +51,8 @@ describe 'facter_conf' do
             fact_groups: [
               {
                 name: 'custom-group-name',
-                facts: ['os.name','ssh'],
-              }
+                facts: ['os.name', 'ssh'],
+              },
             ],
           }
         end
